@@ -24,7 +24,7 @@
         [(AppDelegate*)[[UIApplication sharedApplication] delegate] presentLoginViewControllerAnimated:NO];
         return;
     }
-    // Present Anypic UI
+    // Present PhotObama UI
     [(AppDelegate*)[[UIApplication sharedApplication] delegate] presentPhotoViewController];
     
     // Refresh current user with server side data -- checks if user is still valid and so on

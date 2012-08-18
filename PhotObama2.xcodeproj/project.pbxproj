@@ -14,7 +14,6 @@
 		6A7D19C415D8933F0097F9FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D19C215D8933F0097F9FC /* InfoPlist.strings */; };
 		6A7D19C615D8933F0097F9FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D19C515D8933F0097F9FC /* main.m */; };
 		6A7D19CA15D8933F0097F9FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D19C915D8933F0097F9FC /* AppDelegate.m */; };
-		6A7D19CD15D8933F0097F9FC /* PhotObama2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D19CB15D8933F0097F9FC /* PhotObama2.xcdatamodeld */; };
 		6A7D19DC15D8936E0097F9FC /* firstObama.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D19D315D8936E0097F9FC /* firstObama.png */; };
 		6A7D19DD15D8936E0097F9FC /* firstObama@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D19D415D8936E0097F9FC /* firstObama@2x.png */; };
 		6A7D19DE15D8936E0097F9FC /* secondObama.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D19D515D8936E0097F9FC /* secondObama.png */; };
@@ -37,6 +36,8 @@
 		6AD64D2D15DF4462008CB865 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD64D2C15DF4462008CB865 /* SystemConfiguration.framework */; };
 		6AD64D3915DF47BC008CB865 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD64D3815DF47BC008CB865 /* WelcomeViewController.m */; };
 		6AD64D3C15DF4ACB008CB865 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD64D3B15DF4ACB008CB865 /* LogInViewController.m */; };
+		6AD64D4015DF517A008CB865 /* Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD64D3F15DF5178008CB865 /* Cache.m */; };
+		6AD64D4315DF5318008CB865 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD64D4215DF5316008CB865 /* Constants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +52,6 @@
 		6A7D19C715D8933F0097F9FC /* PhotObama2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhotObama2-Prefix.pch"; sourceTree = "<group>"; };
 		6A7D19C815D8933F0097F9FC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6A7D19C915D8933F0097F9FC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6A7D19CC15D8933F0097F9FC /* PhotObama2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhotObama2.xcdatamodel; sourceTree = "<group>"; };
 		6A7D19D315D8936E0097F9FC /* firstObama.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = firstObama.png; sourceTree = "<group>"; };
 		6A7D19D415D8936E0097F9FC /* firstObama@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "firstObama@2x.png"; sourceTree = "<group>"; };
 		6A7D19D515D8936E0097F9FC /* secondObama.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = secondObama.png; sourceTree = "<group>"; };
@@ -77,6 +77,10 @@
 		6AD64D3815DF47BC008CB865 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		6AD64D3A15DF4ACA008CB865 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		6AD64D3B15DF4ACB008CB865 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
+		6AD64D3E15DF5177008CB865 /* Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cache.h; sourceTree = "<group>"; };
+		6AD64D3F15DF5178008CB865 /* Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cache.m; sourceTree = "<group>"; };
+		6AD64D4115DF5315008CB865 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		6AD64D4215DF5316008CB865 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +151,10 @@
 				6AD64D3215DF470E008CB865 /* Views */,
 				6A7D19C815D8933F0097F9FC /* AppDelegate.h */,
 				6A7D19C915D8933F0097F9FC /* AppDelegate.m */,
+				6AD64D4115DF5315008CB865 /* Constants.h */,
+				6AD64D4215DF5316008CB865 /* Constants.m */,
+				6AD64D3E15DF5177008CB865 /* Cache.h */,
+				6AD64D3F15DF5178008CB865 /* Cache.m */,
 				6A7D19E515D893730097F9FC /* Resources */,
 				6A7D19C015D8933F0097F9FC /* Supporting Files */,
 			);
@@ -156,7 +164,6 @@
 		6A7D19C015D8933F0097F9FC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6A7D19CB15D8933F0097F9FC /* PhotObama2.xcdatamodeld */,
 				6A7D19C115D8933F0097F9FC /* PhotObama2-Info.plist */,
 				6A7D19C215D8933F0097F9FC /* InfoPlist.strings */,
 				6A7D19C515D8933F0097F9FC /* main.m */,
@@ -300,10 +307,11 @@
 			files = (
 				6A7D19C615D8933F0097F9FC /* main.m in Sources */,
 				6A7D19CA15D8933F0097F9FC /* AppDelegate.m in Sources */,
-				6A7D19CD15D8933F0097F9FC /* PhotObama2.xcdatamodeld in Sources */,
 				6A7D19E915D893F70097F9FC /* PhotoViewController.m in Sources */,
 				6AD64D3915DF47BC008CB865 /* WelcomeViewController.m in Sources */,
 				6AD64D3C15DF4ACB008CB865 /* LogInViewController.m in Sources */,
+				6AD64D4015DF517A008CB865 /* Cache.m in Sources */,
+				6AD64D4315DF5318008CB865 /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,19 +436,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		6A7D19CB15D8933F0097F9FC /* PhotObama2.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				6A7D19CC15D8933F0097F9FC /* PhotObama2.xcdatamodel */,
-			);
-			currentVersion = 6A7D19CC15D8933F0097F9FC /* PhotObama2.xcdatamodel */;
-			path = PhotObama2.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 6A7D19AA15D8933E0097F9FC /* Project object */;
 }

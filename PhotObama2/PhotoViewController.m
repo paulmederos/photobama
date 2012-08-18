@@ -117,71 +117,71 @@
 }
 
 - (void)saveData:(UIImage *)photo {
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+//    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+//    NSManagedObjectContext *context = [appDelegate managedObjectContext];
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0];
-    NSString *formattedDateString = [dateFormatter stringFromDate:date];
-
-    NSManagedObject *newPhoto;
-    newPhoto = [NSEntityDescription
-                  insertNewObjectForEntityForName:@"Photos"
-                  inManagedObjectContext:context];
-    
-    [newPhoto setValue:formattedDateString forKey:@"name"];
-    [newPhoto setValue:UIImageJPEGRepresentation(photo,1) forKey:@"content"];
-    [newPhoto setValue:date forKey:@"date"];
-
-    NSError *error;
-    [context save:&error];
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+//    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0];
+//    NSString *formattedDateString = [dateFormatter stringFromDate:date];
+//
+//    NSManagedObject *newPhoto;
+//    newPhoto = [NSEntityDescription
+//                  insertNewObjectForEntityForName:@"Photos"
+//                  inManagedObjectContext:context];
+//    
+//    [newPhoto setValue:formattedDateString forKey:@"name"];
+//    [newPhoto setValue:UIImageJPEGRepresentation(photo,1) forKey:@"content"];
+//    [newPhoto setValue:date forKey:@"date"];
+//
+//    NSError *error;
+//    [context save:&error];
 }
 
 - (void)loadImages {
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Photos" inManagedObjectContext:context];
-    
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:entityDesc];
-    
-    NSPredicate *pred = [NSPredicate predicateWithFormat:nil];
-    [request setPredicate:pred];
-    
-    NSManagedObject *matches = nil;
-    
-    NSError *error;
-    NSArray *objects = [context executeFetchRequest:request
-                                              error:&error];
-    if ([objects count] == 0) {
-        // No photos yet!
-        // Show the intro screen
-        NSLog(@"No photos in DB");
-    } else {        
-        int numPhotos = [objects count];
-        NSLog(@"We have %d photos in DB.", numPhotos);
-        
-        // Make the scroll view to hold images
-        UIScrollView *mainScrollView = [[UIScrollView alloc] initWithFrame: CGRectMake(0,44, 320, 436)];
-        mainScrollView.backgroundColor = [UIColor colorWithRed: 0.2 green:0.2 blue:0.2 alpha:0.5];
-        mainScrollView.contentSize = CGSizeMake(320, 310 * numPhotos + 10);
-        
-        // Loop through matches and add photos to scroll view
-        for (int i = 0; i < [objects count]; i++) {
-            NSLog(@"Matches = %@", [[objects objectAtIndex:i] name]);
-//            UIImage *photo = [[objects objectAtIndex:i] valueForKey:@"content"];
-            UIImage *photo = [[UIImage alloc] initWithData:[[objects objectAtIndex:i] valueForKey:@"content"]];
-            UIImageView *photoView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10 + 310*i, 300, 300)];
-            [photoView setBackgroundColor:[UIColor colorWithRed: 0.3 green:0.2 blue:0.2 alpha:0.5]];
-            photoView.image = photo;
-            [mainScrollView addSubview:photoView];
-        }
-        
-        
-        // Add scroll view to main window
-        [self.view addSubview:mainScrollView];
-    }
+//    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+//    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+//    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Photos" inManagedObjectContext:context];
+//    
+//    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+//    [request setEntity:entityDesc];
+//    
+//    NSPredicate *pred = [NSPredicate predicateWithFormat:nil];
+//    [request setPredicate:pred];
+//    
+//    NSManagedObject *matches = nil;
+//    
+//    NSError *error;
+//    NSArray *objects = [context executeFetchRequest:request
+//                                              error:&error];
+//    if ([objects count] == 0) {
+//        // No photos yet!
+//        // Show the intro screen
+//        NSLog(@"No photos in DB");
+//    } else {        
+//        int numPhotos = [objects count];
+//        NSLog(@"We have %d photos in DB.", numPhotos);
+//        
+//        // Make the scroll view to hold images
+//        UIScrollView *mainScrollView = [[UIScrollView alloc] initWithFrame: CGRectMake(0,44, 320, 436)];
+//        mainScrollView.backgroundColor = [UIColor colorWithRed: 0.2 green:0.2 blue:0.2 alpha:0.5];
+//        mainScrollView.contentSize = CGSizeMake(320, 310 * numPhotos + 10);
+//        
+//        // Loop through matches and add photos to scroll view
+//        for (int i = 0; i < [objects count]; i++) {
+//            NSLog(@"Matches = %@", [[objects objectAtIndex:i] name]);
+////            UIImage *photo = [[objects objectAtIndex:i] valueForKey:@"content"];
+//            UIImage *photo = [[UIImage alloc] initWithData:[[objects objectAtIndex:i] valueForKey:@"content"]];
+//            UIImageView *photoView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10 + 310*i, 300, 300)];
+//            [photoView setBackgroundColor:[UIColor colorWithRed: 0.3 green:0.2 blue:0.2 alpha:0.5]];
+//            photoView.image = photo;
+//            [mainScrollView addSubview:photoView];
+//        }
+//        
+//        
+//        // Add scroll view to main window
+//        [self.view addSubview:mainScrollView];
+//    }
 }
 
 
