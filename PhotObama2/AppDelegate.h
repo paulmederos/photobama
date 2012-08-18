@@ -6,11 +6,20 @@
 //  Copyright (c) 2012 Enchant. All rights reserved.
 //
 
+#import <Parse/Parse.h>
 #import <UIKit/UIKit.h>
+#import "WelcomeViewController.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@class PhotoViewController;
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate, PFLogInViewControllerDelegate>
+{
+    PhotoViewController *viewController;
+}
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, strong) UINavigationController *navController;
+@property (strong, nonatomic) IBOutlet PhotoViewController *photoViewController;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
@@ -18,5 +27,13 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+
+- (BOOL)isParseReachable;
+
+- (void)presentLoginViewController;
+- (void)presentLoginViewControllerAnimated:(BOOL)animated;
+- (void)presentPhotoViewController;
+
+- (void)logOut;
 
 @end

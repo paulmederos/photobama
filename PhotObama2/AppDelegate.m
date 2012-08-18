@@ -7,18 +7,51 @@
 //
 
 #import "AppDelegate.h"
+#import "PhotoViewController.h"
+#import "LogInViewController.h"
+#import "WelcomeViewController.h"
+
+@interface AppDelegate () {
+    NSMutableData *_data;
+    BOOL firstLaunch;
+}
+
+@property (nonatomic, strong) WelcomeViewController *welcomeViewController;
+
+@end
 
 @implementation AppDelegate
+
+@synthesize window;
+@synthesize navController;
+@synthesize photoViewController;
+@synthesize welcomeViewController;
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // ****************************************************************************
+    // Parse initialization
+    // [Parse setApplicationId:@"APPLICATION_ID" clientKey:@"CLIENT_KEY"];
+    
+    [Parse setApplicationId:@"sL6mqSA3RJHa3t1IUpGNct09H0puvgioXtC2I5DL"
+                  clientKey:@"VareO3RCTwZ9IVsuovUnfvlZDwg4gmR8krI8kviQ"];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:YES];
+    self.window = [[UIWindow alloc]
+                   initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.welcomeViewController = [[WelcomeViewController init] alloc];
+    self.navController = [[UINavigationController alloc] initWithRootViewController:self.welcomeViewController];
+    self.navController.navigationBarHidden = YES;
+    
+    self.window.rootViewController = self.navController;
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -108,34 +141,33 @@
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-         
-         Typical reasons for an error here include:
-         * The persistent store is not accessible;
-         * The schema for the persistent store is incompatible with current managed object model.
-         Check the error message to determine what the actual problem was.
-         
-         
-         If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
-         
-         If you encounter schema incompatibility errors during development, you can reduce their frequency by:
-         * Simply deleting the existing store:
-         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
-         
-         * Performing automatic lightweight migration by passing the following dictionary as the options parameter:
-         @{NSMigratePersistentStoresAutomaticallyOption:@YES, NSInferMappingModelAutomaticallyOption:@YES}
-         
-         Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
-         
-         */
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }    
     
     return _persistentStoreCoordinator;
+}
+
+- (void)presentPhotoViewControllerAnimated:(BOOL)animated
+{
+    self.photoViewController = [[PhotoViewController alloc] init];
+
+}
+
+- (void)presentLoginViewControllerAnimated:(BOOL)animated
+{
+    LogInViewController *loginViewController = [[LogInViewController alloc] init];
+    [loginViewController setDelegate:self];
+    loginViewController.fields = PFLogInFieldsFacebook;
+    loginViewController.facebookPermissions = [NSArray arrayWithObjects:@"user_about_me", nil];
+    
+    [self.welcomeViewController presentModalViewController:loginViewController animated:NO];
+}
+
+
+- (void)presentLoginViewController
+{
+    [self presentLoginViewControllerAnimated:YES];
 }
 
 #pragma mark - Application's Documents directory
