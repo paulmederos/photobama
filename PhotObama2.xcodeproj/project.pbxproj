@@ -14,10 +14,10 @@
 		6A7D19C415D8933F0097F9FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D19C215D8933F0097F9FC /* InfoPlist.strings */; };
 		6A7D19C615D8933F0097F9FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D19C515D8933F0097F9FC /* main.m */; };
 		6A7D19CA15D8933F0097F9FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D19C915D8933F0097F9FC /* AppDelegate.m */; };
-		6A7D19DC15D8936E0097F9FC /* firstObama.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D19D315D8936E0097F9FC /* firstObama.png */; };
-		6A7D19DD15D8936E0097F9FC /* firstObama@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D19D415D8936E0097F9FC /* firstObama@2x.png */; };
-		6A7D19DE15D8936E0097F9FC /* secondObama.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D19D515D8936E0097F9FC /* secondObama.png */; };
-		6A7D19DF15D8936E0097F9FC /* secondObama@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D19D615D8936E0097F9FC /* secondObama@2x.png */; };
+		6A7D19DC15D8936E0097F9FC /* obama-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D19D315D8936E0097F9FC /* obama-0.png */; };
+		6A7D19DD15D8936E0097F9FC /* obama-0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D19D415D8936E0097F9FC /* obama-0@2x.png */; };
+		6A7D19DE15D8936E0097F9FC /* obama-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D19D515D8936E0097F9FC /* obama-1.png */; };
+		6A7D19DF15D8936E0097F9FC /* obama-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D19D615D8936E0097F9FC /* obama-1@2x.png */; };
 		6A7D19E015D8936E0097F9FC /* twitter-32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D19D715D8936E0097F9FC /* twitter-32x32.png */; };
 		6A7D19E115D8936E0097F9FC /* Icon-4g-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D19D815D8936E0097F9FC /* Icon-4g-114x114.png */; };
 		6A7D19E215D8936E0097F9FC /* Icon 3g 57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D19D915D8936E0097F9FC /* Icon 3g 57x57.png */; };
@@ -25,6 +25,10 @@
 		6A7D19E415D8936E0097F9FC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D19DB15D8936E0097F9FC /* Default.png */; };
 		6A7D19E915D893F70097F9FC /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D19E715D893F70097F9FC /* PhotoViewController.m */; };
 		6A7D19EA15D893F70097F9FC /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D19E815D893F70097F9FC /* PhotoViewController.xib */; };
+		6ABB3EDF15E0371300DE9D81 /* EditPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ABB3EDE15E0371300DE9D81 /* EditPhotoViewController.m */; };
+		6ABB3EED15E04F9E00DE9D81 /* UIImage+AlphaAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ABB3EE415E0389B00DE9D81 /* UIImage+AlphaAdditions.m */; };
+		6ABB3EEE15E04F9E00DE9D81 /* UIImage+ResizeAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ABB3EE615E0389B00DE9D81 /* UIImage+ResizeAdditions.m */; };
+		6ABB3EEF15E04F9E00DE9D81 /* UIImage+RoundedCornerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ABB3EE815E0389B00DE9D81 /* UIImage+RoundedCornerAdditions.m */; };
 		6AD64D1D15DF4412008CB865 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD64D1B15DF4401008CB865 /* Parse.framework */; };
 		6AD64D1F15DF442B008CB865 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD64D1E15DF442B008CB865 /* AudioToolbox.framework */; };
 		6AD64D2115DF4433008CB865 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD64D2015DF4433008CB865 /* CFNetwork.framework */; };
@@ -52,10 +56,10 @@
 		6A7D19C715D8933F0097F9FC /* PhotObama2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhotObama2-Prefix.pch"; sourceTree = "<group>"; };
 		6A7D19C815D8933F0097F9FC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6A7D19C915D8933F0097F9FC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6A7D19D315D8936E0097F9FC /* firstObama.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = firstObama.png; sourceTree = "<group>"; };
-		6A7D19D415D8936E0097F9FC /* firstObama@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "firstObama@2x.png"; sourceTree = "<group>"; };
-		6A7D19D515D8936E0097F9FC /* secondObama.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = secondObama.png; sourceTree = "<group>"; };
-		6A7D19D615D8936E0097F9FC /* secondObama@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "secondObama@2x.png"; sourceTree = "<group>"; };
+		6A7D19D315D8936E0097F9FC /* obama-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "obama-0.png"; sourceTree = "<group>"; };
+		6A7D19D415D8936E0097F9FC /* obama-0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "obama-0@2x.png"; sourceTree = "<group>"; };
+		6A7D19D515D8936E0097F9FC /* obama-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "obama-1.png"; sourceTree = "<group>"; };
+		6A7D19D615D8936E0097F9FC /* obama-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "obama-1@2x.png"; sourceTree = "<group>"; };
 		6A7D19D715D8936E0097F9FC /* twitter-32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-32x32.png"; sourceTree = "<group>"; };
 		6A7D19D815D8936E0097F9FC /* Icon-4g-114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-4g-114x114.png"; sourceTree = "<group>"; };
 		6A7D19D915D8936E0097F9FC /* Icon 3g 57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon 3g 57x57.png"; sourceTree = "<group>"; };
@@ -64,7 +68,15 @@
 		6A7D19E615D893F70097F9FC /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		6A7D19E715D893F70097F9FC /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		6A7D19E815D893F70097F9FC /* PhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
-		6AD64D1B15DF4401008CB865 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		6ABB3EDD15E0371300DE9D81 /* EditPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditPhotoViewController.h; sourceTree = "<group>"; };
+		6ABB3EDE15E0371300DE9D81 /* EditPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditPhotoViewController.m; sourceTree = "<group>"; };
+		6ABB3EE315E0389B00DE9D81 /* UIImage+AlphaAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+AlphaAdditions.h"; sourceTree = "<group>"; };
+		6ABB3EE415E0389B00DE9D81 /* UIImage+AlphaAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AlphaAdditions.m"; sourceTree = "<group>"; };
+		6ABB3EE515E0389B00DE9D81 /* UIImage+ResizeAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ResizeAdditions.h"; sourceTree = "<group>"; };
+		6ABB3EE615E0389B00DE9D81 /* UIImage+ResizeAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ResizeAdditions.m"; sourceTree = "<group>"; };
+		6ABB3EE715E0389B00DE9D81 /* UIImage+RoundedCornerAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCornerAdditions.h"; sourceTree = "<group>"; };
+		6ABB3EE815E0389B00DE9D81 /* UIImage+RoundedCornerAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCornerAdditions.m"; sourceTree = "<group>"; };
+		6AD64D1B15DF4401008CB865 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ../Parse.framework; sourceTree = "<group>"; };
 		6AD64D1E15DF442B008CB865 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		6AD64D2015DF4433008CB865 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6AD64D2215DF4443008CB865 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
@@ -111,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				6A7D19BF15D8933F0097F9FC /* PhotObama2 */,
+				6ABB3EE215E0385F00DE9D81 /* External */,
 				6A7D19B615D8933E0097F9FC /* Frameworks */,
 				6A7D19B415D8933E0097F9FC /* Products */,
 			);
@@ -135,7 +148,6 @@
 				6AD64D2215DF4443008CB865 /* libz.1.1.3.dylib */,
 				6AD64D2015DF4433008CB865 /* CFNetwork.framework */,
 				6AD64D1E15DF442B008CB865 /* AudioToolbox.framework */,
-				6AD64D1B15DF4401008CB865 /* Parse.framework */,
 				6A7D19B715D8933E0097F9FC /* UIKit.framework */,
 				6A7D19B915D8933E0097F9FC /* Foundation.framework */,
 				6A7D19BB15D8933E0097F9FC /* CoreGraphics.framework */,
@@ -184,6 +196,38 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		6ABB3EE115E0371900DE9D81 /* Take Photo */ = {
+			isa = PBXGroup;
+			children = (
+				6ABB3EDD15E0371300DE9D81 /* EditPhotoViewController.h */,
+				6ABB3EDE15E0371300DE9D81 /* EditPhotoViewController.m */,
+			);
+			name = "Take Photo";
+			sourceTree = "<group>";
+		};
+		6ABB3EE215E0385F00DE9D81 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				6ABB3EE915E038A100DE9D81 /* UIImage Categories */,
+				6AD64D1B15DF4401008CB865 /* Parse.framework */,
+			);
+			name = External;
+			path = PhotObama2;
+			sourceTree = "<group>";
+		};
+		6ABB3EE915E038A100DE9D81 /* UIImage Categories */ = {
+			isa = PBXGroup;
+			children = (
+				6ABB3EE315E0389B00DE9D81 /* UIImage+AlphaAdditions.h */,
+				6ABB3EE415E0389B00DE9D81 /* UIImage+AlphaAdditions.m */,
+				6ABB3EE515E0389B00DE9D81 /* UIImage+ResizeAdditions.h */,
+				6ABB3EE615E0389B00DE9D81 /* UIImage+ResizeAdditions.m */,
+				6ABB3EE715E0389B00DE9D81 /* UIImage+RoundedCornerAdditions.h */,
+				6ABB3EE815E0389B00DE9D81 /* UIImage+RoundedCornerAdditions.m */,
+			);
+			name = "UIImage Categories";
+			sourceTree = "<group>";
+		};
 		6AD64D3215DF470E008CB865 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +240,7 @@
 			children = (
 				6AD64D3615DF47A2008CB865 /* Login */,
 				6AD64D3D15DF4B44008CB865 /* Home */,
+				6ABB3EE115E0371900DE9D81 /* Take Photo */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -203,10 +248,10 @@
 		6AD64D3515DF4760008CB865 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				6A7D19D315D8936E0097F9FC /* firstObama.png */,
-				6A7D19D415D8936E0097F9FC /* firstObama@2x.png */,
-				6A7D19D515D8936E0097F9FC /* secondObama.png */,
-				6A7D19D615D8936E0097F9FC /* secondObama@2x.png */,
+				6A7D19D315D8936E0097F9FC /* obama-0.png */,
+				6A7D19D415D8936E0097F9FC /* obama-0@2x.png */,
+				6A7D19D515D8936E0097F9FC /* obama-1.png */,
+				6A7D19D615D8936E0097F9FC /* obama-1@2x.png */,
 				6A7D19D715D8936E0097F9FC /* twitter-32x32.png */,
 			);
 			name = Assets;
@@ -285,10 +330,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A7D19C415D8933F0097F9FC /* InfoPlist.strings in Resources */,
-				6A7D19DC15D8936E0097F9FC /* firstObama.png in Resources */,
-				6A7D19DD15D8936E0097F9FC /* firstObama@2x.png in Resources */,
-				6A7D19DE15D8936E0097F9FC /* secondObama.png in Resources */,
-				6A7D19DF15D8936E0097F9FC /* secondObama@2x.png in Resources */,
+				6A7D19DC15D8936E0097F9FC /* obama-0.png in Resources */,
+				6A7D19DD15D8936E0097F9FC /* obama-0@2x.png in Resources */,
+				6A7D19DE15D8936E0097F9FC /* obama-1.png in Resources */,
+				6A7D19DF15D8936E0097F9FC /* obama-1@2x.png in Resources */,
 				6A7D19E015D8936E0097F9FC /* twitter-32x32.png in Resources */,
 				6A7D19E115D8936E0097F9FC /* Icon-4g-114x114.png in Resources */,
 				6A7D19E215D8936E0097F9FC /* Icon 3g 57x57.png in Resources */,
@@ -305,6 +350,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6ABB3EED15E04F9E00DE9D81 /* UIImage+AlphaAdditions.m in Sources */,
+				6ABB3EEE15E04F9E00DE9D81 /* UIImage+ResizeAdditions.m in Sources */,
+				6ABB3EEF15E04F9E00DE9D81 /* UIImage+RoundedCornerAdditions.m in Sources */,
 				6A7D19C615D8933F0097F9FC /* main.m in Sources */,
 				6A7D19CA15D8933F0097F9FC /* AppDelegate.m in Sources */,
 				6A7D19E915D893F70097F9FC /* PhotoViewController.m in Sources */,
@@ -312,6 +360,7 @@
 				6AD64D3C15DF4ACB008CB865 /* LogInViewController.m in Sources */,
 				6AD64D4015DF517A008CB865 /* Cache.m in Sources */,
 				6AD64D4315DF5318008CB865 /* Constants.m in Sources */,
+				6ABB3EDF15E0371300DE9D81 /* EditPhotoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

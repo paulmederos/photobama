@@ -52,7 +52,6 @@
     
     self.window = [[UIWindow alloc]
                    initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
     
     self.welcomeViewController = [[WelcomeViewController alloc] init];
     self.navController = [[UINavigationController alloc] initWithRootViewController:self.welcomeViewController];
@@ -108,9 +107,9 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     // Unsubscribe from push notifications
-    [[PFInstallation currentInstallation] removeObjectForKey:kInstallationUserKey];
-    [[PFInstallation currentInstallation] removeObject:[[PFUser currentUser] objectForKey:kUserPrivateChannelKey] forKey:kInstallationChannelsKey];
-    [[PFInstallation currentInstallation] saveEventually];
+//    [[PFInstallation currentInstallation] removeObjectForKey:kInstallationUserKey];
+//    [[PFInstallation currentInstallation] removeObject:[[PFUser currentUser] objectForKey:kUserPrivateChannelKey] forKey:kInstallationChannelsKey];
+//    [[PFInstallation currentInstallation] saveEventually];
     
     // Log out
     [PFUser logOut];
