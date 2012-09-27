@@ -17,10 +17,4 @@
     int chosenObama;
 }
 
-- (void)loadImages;
-- (void)saveData:(UIImage *)photo;
-
-- (IBAction)logOut:(id)sender;
-- (IBAction)takePhoto:(id)sender;
-
 @end

@@ -1,16 +1,30 @@
 //
-//  PhotoViewController.m
+//  HomeViewController.m
 //  PhotObama2
 //
-//  Created by Paul Mederos Jr on 8/12/12.
+//  Created by Paul Mederos Jr on 8/20/12.
 //  Copyright (c) 2012 Enchant. All rights reserved.
 //
 
-#import "PhotoViewController.h"
 #import "AppDelegate.h"
+#import "HomeViewController.h"
+#import "PhotoViewController.h"
+#import "SettingsActionSheetDelegate.h"
+#import "MBProgressHUD.h"
 #import "UIImage+ResizeAdditions.h"
 
-@interface PhotoViewController ()
+@interface HomeViewController ()
+{
+    PhotoViewController *photoViewController;
+    UIView *fullOverlay;
+    UIImageView *obamaImageView;
+    
+    NSArray *obamas;
+    int chosenObama;
+}
+
+@property (nonatomic, strong) SettingsActionSheetDelegate *settingsActionSheetDelegate;
+@property (nonatomic, strong) UIView *blankTimelineView;
 
 @property (nonatomic, strong) PFFile *photoFile;
 @property (nonatomic, assign) UIBackgroundTaskIdentifier fileUploadBackgroundTaskId;
@@ -18,7 +32,10 @@
 
 @end
 
-@implementation PhotoViewController
+@implementation HomeViewController
+
+@synthesize settingsActionSheetDelegate;
+@synthesize blankTimelineView;
 
 @synthesize photoFile;
 @synthesize fileUploadBackgroundTaskId;
@@ -39,6 +56,62 @@
     return self;
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    photoViewController = [[PhotoViewController alloc] init];
+    
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logoNavigationBar"]];
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:62.0f/255.0f green:126.0f/255.0f blue:189.0f/255.0f alpha:1.0f]];
+
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
+                                             initWithTitle:@"Logout"
+                                             style:UIBarButtonSystemItemAction
+                                             target:self
+                                             action:@selector(logOut:)];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                                              initWithBarButtonSystemItem:UIBarButtonSystemItemCamera
+                                              target:self
+                                              action:@selector(takePhoto:)];
+    
+    [[self navigationController] setNavigationBarHidden:NO];
+//    self.blankTimelineView = [[UIView alloc] initWithFrame:self.tableView.bounds];
+}
+
+#pragma mark - PFQueryTableViewController
+
+- (void)objectsDidLoad:(NSError *)error {
+    [super objectsDidLoad:error];
+    
+    if (self.objects.count == 0 && ![[self queryForTable] hasCachedResult] & !self.firstLaunch) {
+        self.tableView.scrollEnabled = NO;
+        
+        if (!self.blankTimelineView.superview) {
+            self.blankTimelineView.alpha = 0.0f;
+            self.tableView.tableHeaderView = self.blankTimelineView;
+            
+            [UIView animateWithDuration:0.200f animations:^{
+                self.blankTimelineView.alpha = 1.0f;
+            }];
+        }
+    } else {
+        self.tableView.tableHeaderView = nil;
+        self.tableView.scrollEnabled = YES;
+    }
+}
+
+#pragma mark - ()
+
+- (void)settingsButtonAction:(id)sender
+{
+    self.settingsActionSheetDelegate = [[SettingsActionSheetDelegate alloc] initWithNavigationController:self.navigationController];
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self.settingsActionSheetDelegate cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Log Out", nil];
+    
+    [actionSheet showFromBarButtonItem:self.navigationItem.leftBarButtonItem animated:YES];
+}
+
 - (void)takePhoto:(id)sender {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     
@@ -56,35 +129,36 @@
     
     // Create background texture to Obama scroll image selector
     UIImageView *backTextureView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"black_linen"]];
-    backTextureView.frame = CGRectMake(0,0,320,146);
+    backTextureView.frame = CGRectMake(0,320,320,108);
     
     // Create the scroll view to hold different Obama images
-    UIScrollView *newView = [[UIScrollView alloc] initWithFrame: CGRectMake(0,0,320,146)];
+    UIScrollView *newView = [[UIScrollView alloc] initWithFrame: CGRectMake(0,320,320,108)];
     newView.backgroundColor = [UIColor colorWithRed: 0.2 green:0.2 blue:0.2 alpha:0.0];
-    newView.contentSize = CGSizeMake(20 + 74 * obamas.count, 84);
+    newView.contentSize = CGSizeMake(28 + 74 * obamas.count, 80);
+    
     
     for (int i = 0; i < obamas.count; i++) {
         UIButton *touchView = [UIButton buttonWithType: UIButtonTypeCustom];
+        //  [touchView setBackgroundImage:[UIImage imageNamed:@"firstObama.png"] forState: UIControlStateNormal];
+        
         [touchView setBackgroundColor:[self randomColor]];
         
         touchView.tag = i;
-        touchView.frame = CGRectMake(10 + 74 * i, 10, 64, 64);
-        
+        touchView.frame = CGRectMake(10 + 74 * i, 22, 64, 64);
         [touchView addTarget:self action:@selector(changePhoto:) forControlEvents: UIControlEventTouchUpInside];
         [newView addSubview:touchView];
     }
     
+    // Add all the subviews to image picker overlay, then display it.
     [fullOverlay addSubview: obamaImageView];
     [fullOverlay addSubview: backTextureView];
     [fullOverlay addSubview: newView];
-    
     
     imagePicker.cameraOverlayView = fullOverlay;
     
     
     // Place image picker on screen modally
-    NSLog(@"Class is: %@", sender);
-    [sender presentModalViewController:imagePicker animated:YES];
+    [self presentModalViewController:imagePicker animated:YES];
 }
 
 #pragma mark - UIImagePickerDelegate
@@ -93,51 +167,45 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
     [self dismissModalViewControllerAnimated:YES];
     
     // Get picked photo from info dictionary
     UIImage *originalPhoto = [info objectForKey:UIImagePickerControllerOriginalImage];
-
+    
     // Pull the proper Obama image
-    UIImage *obamaOverlay = [UIImage imageNamed:[obamas objectAtIndex:chosenObama] ];
-
+    UIImage *obamaOverlay = [UIImage imageNamed:[obamas objectAtIndex:chosenObama]];
+    
     // Set the size of the photo
-    CGSize targetSize = CGSizeMake(originalPhoto.size.width, originalPhoto.size.height);
-    CGRect photoImageRect = CGRectMake(0, 0, originalPhoto.size.width, originalPhoto.size.height);
-
+    CGSize targetSize = CGSizeMake(320.0f, 320.0f);
+    CGRect photoImageRect = CGRectMake(0, 0, 320.0f, 428.0f); // 480 height - 52 camera bar = 428 visible
+    
     // Position Obama's rect
-    CGRect obamaImageRect = CGRectMake(originalPhoto.size.width - obamaOverlay.size.width*4,
-                                       originalPhoto.size.height - obamaOverlay.size.height*4,
-                                       obamaOverlay.size.width*4,
-                                       obamaOverlay.size.height*4);
-
+    int obamaWidth = [UIImage imageNamed: [obamas objectAtIndex:chosenObama]].size.width;
+    int obamaHeight = [UIImage imageNamed: [obamas objectAtIndex:chosenObama]].size.height;
+    CGRect obamaImageRect = CGRectMake(120, 100, obamaWidth, obamaHeight);
+    
     UIGraphicsBeginImageContext(targetSize);
     CGContextRef context = UIGraphicsGetCurrentContext();
     UIGraphicsPushContext(context);
-
+    
     [originalPhoto drawInRect:photoImageRect];
     [obamaOverlay drawInRect:obamaImageRect];
-
+    
     UIGraphicsPopContext();
-
+    
     // Grab the merged UIImage from the image context
-    UIImage* savedImage = UIGraphicsGetImageFromCurrentImageContext();
-
+    UIImage* mergedImage = UIGraphicsGetImageFromCurrentImageContext();
+    
     // Clean up drawing environment
     UIGraphicsEndImageContext();
-
-
+    
     // Save merged image to Camera roll
     // UIImageWriteToSavedPhotosAlbum(SavedImage, nil, nil, nil);
     
-    NSLog(@"Image is set to: %@", savedImage);
-    
-    // Resize the image using Trevor Harmon's algorithms (see UIImage+ResizeAdditions in External folder.
-    UIImage *resizedImage = [savedImage resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(560.0f, 560.0f) interpolationQuality:kCGInterpolationHigh];
-    
     // Compress the image to JPG quality for uploading.
-    NSData *imageData = UIImageJPEGRepresentation(resizedImage, 0.8f);
+    NSData *imageData = UIImageJPEGRepresentation(mergedImage, 1.0f);
     self.photoFile = [PFFile fileWithData:imageData];
     
     // Request a background task to upload the file in the background using Parse.
@@ -176,6 +244,8 @@
             NSLog(@"Photo uploaded");
             
             [[Cache sharedCache] setAttributesForPhoto:photo likers:[NSArray array] commenters:[NSArray array] likedByCurrentUser:NO];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:TabBarControllerDidFinishEditingPhotoNotification object:photo];
         } else {
             NSLog(@"Photo failed to save: %@", error);
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Couldn't post your photo" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
@@ -183,8 +253,6 @@
         }
         [[UIApplication sharedApplication] endBackgroundTask:self.photoPostBackgroundTaskId];
     }];
-    
-    [self dismissModalViewControllerAnimated:YES];
 }
 
 
@@ -202,10 +270,12 @@
     [obamaImageView removeFromSuperview];
     
     // Get the current Obama image, position accordingly.
-    obamaImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed: [obamas objectAtIndex:chosenObama] ]];
-    obamaImageView.frame = CGRectMake(120, 100, obamaImageView.image.size.width/1.5,
-                                      obamaImageView.image.size.height/1.5);
-
+    obamaImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:
+                                                         [obamas objectAtIndex:chosenObama] ]];
+    obamaImageView.frame = CGRectMake(120, 100,
+                                      obamaImageView.image.size.width,
+                                      obamaImageView.image.size.height);
+    
     // Add the New Obama to the main overlay.
     [fullOverlay addSubview: obamaImageView];
 }
@@ -233,18 +303,4 @@
     return [colors objectAtIndex:(arc4random() % 6)];
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
 @end
-
-

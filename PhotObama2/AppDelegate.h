@@ -11,17 +11,16 @@
 
 @class PhotoViewController;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, PFLogInViewControllerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, PFLogInViewControllerDelegate, PF_FBRequestDelegate, NSURLConnectionDataDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
 @property (nonatomic, strong) UINavigationController *navController;
 
 - (BOOL)isParseReachable;
 
 - (void)presentLoginViewController;
 - (void)presentLoginViewControllerAnimated:(BOOL)animated;
-- (void)presentPhotoViewController;
+- (void)presentHomeViewController;
 
 - (void)logOut;
 
